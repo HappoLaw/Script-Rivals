@@ -884,7 +884,7 @@ arg2 = arg2 or ""
 
 for k, v116 in parts, nil, nil do
 if v116 == "" then
-local
+continue
 end
 local str7 = k == #parts and "" or "/"
 local v117 = tostring
@@ -1963,7 +1963,7 @@ return y.c
 end
 end
 do -- z
-local function fn35()return{Accent=Color3.fromRGB(197,59,59),Outline=Color3.fromRGB(24,25,24),Background=Color3.fromRGB(0,0,0),ElementBackground=Color3.fromRGB(6,6,6),TabButtonSelected=Color3.fromRGB(51,65,70),Unselected=Color3.fromRGB(75,72,72),TextColor=Color3.fromRGB(197,197,197),ToggleCircleUnselected=Color3.fromRGB(70,85,87),ToggleBackgroundUnselected=Color3.fromRGB(12,13,13),GradientTop=Color3.fromRGB(14,16,16),GradientMid=Color3.fromRGB(6,6,6),GradientDark=Color3.fromRGB(3,3,3),GradientDeep=Color3.fromRGB(0,0,0),TabHighlight=Color3.fromRGB(51,65,70),TabShadow=Color3.fromRGB(30,51,61)};end
+local function fn35()return{Accent=Color3.fromRGB(154,213,222),Outline=Color3.fromRGB(24,25,24),Background=Color3.fromRGB(0,0,0),ElementBackground=Color3.fromRGB(6,6,6),TabButtonSelected=Color3.fromRGB(51,65,70),Unselected=Color3.fromRGB(75,72,72),TextColor=Color3.fromRGB(197,197,197),ToggleCircleUnselected=Color3.fromRGB(70,85,87),ToggleBackgroundUnselected=Color3.fromRGB(12,13,13),GradientTop=Color3.fromRGB(14,16,16),GradientMid=Color3.fromRGB(6,6,6),GradientDark=Color3.fromRGB(3,3,3),GradientDeep=Color3.fromRGB(0,0,0),TabHighlight=Color3.fromRGB(51,65,70),TabShadow=Color3.fromRGB(30,51,61)};end
 
 tbl17.z = function()
 local z = tbl17.cache.z
@@ -17851,7 +17851,7 @@ fn38(arg, arg3, v123)
 local v124 = fn39(arg, arg4, arg3, arg2, arg5)
 fn40(v121:AddSection({ Title = "Startup", Side = "left" }), arg, arg7)
 fn41(v121:AddSection({ Title = "Notifications", Side = "right" }), arg6)
-v121:AddSection({ Title = v86[199], Side = "right" }):AddButton({ Label = "Unload CustomHub", Confirm = true, OnClick = arg4.Unload })
+v121:AddSection({ Title = v86[199], Side = "right" }):AddButton({ Label = "Unload KiciaHook", Confirm = true, OnClick = arg4.Unload })
 return { General = { Page = v120, Grid = v121 }, ConfigProfiles = { Page = v122, Grid = v123 }, Theme = v124 }
 end
 end
@@ -19799,7 +19799,7 @@ return bi.c
 end
 end
 do -- bj
-local function fn35() tbl17 .a5();return{ColorAnimations={Entries= tbl17 .i().atomic({})},Notifications={Enabled=true,Side="TopLeft",Size=15,Font="Inconsolata",Offset=0},Theme={Accent=Color3.fromRGB(197,59,59),Outline=Color3.fromRGB(24,25,24),Background=Color3.fromRGB(0,0,0),ElementBackground=Color3.fromRGB(6,6,6),TabButtonSelected=Color3.fromRGB(51,65,70),Unselected=Color3.fromRGB(75,72,72),TextColor=Color3.fromRGB(197,197,197),ToggleCircleUnselected=Color3.fromRGB(70,85,87),ToggleBackgroundUnselected=Color3.fromRGB(12,13,13)},AutoExecuteScript={Enabled=false}};end
+local function fn35() tbl17 .a5();return{ColorAnimations={Entries= tbl17 .i().atomic({})},Notifications={Enabled=true,Side="TopLeft",Size=15,Font="Inconsolata",Offset=0},Theme={Accent=Color3.fromRGB(154,213,222),Outline=Color3.fromRGB(24,25,24),Background=Color3.fromRGB(0,0,0),ElementBackground=Color3.fromRGB(6,6,6),TabButtonSelected=Color3.fromRGB(51,65,70),Unselected=Color3.fromRGB(75,72,72),TextColor=Color3.fromRGB(197,197,197),ToggleCircleUnselected=Color3.fromRGB(70,85,87),ToggleBackgroundUnselected=Color3.fromRGB(12,13,13)},AutoExecuteScript={Enabled=false}};end
 
 tbl17.bj = function()
 local bj = tbl17.cache.bj
@@ -21536,7 +21536,7 @@ return (v117:Add(v115.new({
 DefaultConfig = tbl17.bm(),
 CurrentVersion = 17,
 LegacyVersion = 1,
-SavePath = "kiciahook/rivals_v3/configs/",
+SavePath = "kiciarebuild/rivals/configs/",
 Migrations = tbl17.bF(),
 Serialize = v116.normalize,
 Deserialize = v118.deserialize,
@@ -42014,7 +42014,7 @@ _configManager = v115.new({
 DefaultConfig = v120,
 CurrentVersion = v86[56],
 Migrations = { fn36 },
-SavePath = "kiciahook/rivals_v3/cosmetics/states",
+SavePath = "kiciarebuild/rivals/cosmetics",
 Deserialize = fn38,
 }),
 _stateConfig = v119,
@@ -66341,14 +66341,14 @@ do
         local path = "kiciarebuild/lithium_logo.png"
         local ok = pcall(wrf, path, decode(LITHIUM_LOGO_B64))
         local ok2, id = pcall(gca, path)
-        --  Kicia's original logo is used; the Lithium one is no longer applied.
+        if ok and ok2 and type(id) == "string" and id ~= "" then K.LithiumLogo = id end
     end
 end
 
 --  Kicia's error reporter needs a sink; ours prints to the F9 console.
 tbl17.b().use({ Report = function(_, e)
     local detail = type(e) == "table" and (e.Detail or e.Operation) or e
-    warn("[Custom Rebuild] " .. tostring(detail))
+    warn("[Kicia Rebuild] " .. tostring(detail))
 end })
 
 local boot = (function()
